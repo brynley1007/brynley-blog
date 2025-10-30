@@ -1,6 +1,6 @@
 {
   "name": "brynley-blog",
-  "description": "Build a personal website, blog, or portfolio with Astro.",
+  "description": "Blog.",
   "private": true,
   "cloudflare": {
     "label": "Astro Framework Starter",
