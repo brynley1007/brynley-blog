@@ -3,9 +3,9 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 
 const links = [
-  { name: "Home", href: "/" },
-  { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'About', href: '/about' },
 ];
 ---
 
@@ -13,28 +13,16 @@ const links = [
   <div class="container">
     <a href="/" class="logo">{SITE_TITLE}</a>
 
-    <!-- Burger icon -->
-    <button
-      id="menuButton"
-      class="menu-button"
-      aria-label="Toggle navigation"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="icon"
-      >
+    <!-- Burger -->
+    <button id="menuButton" class="menu-button" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="icon">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
       </svg>
     </button>
 
-    <!-- Navigation -->
     <nav id="mainNav" class="nav">
       <ul>
-        {links.map(link => (
+        {links.map((link) => (
           <li><HeaderLink {...link} /></li>
         ))}
       </ul>
@@ -42,13 +30,17 @@ const links = [
   </div>
 </header>
 
-<!-- ✅ Client script that runs in the browser -->
-<script client:load lang="ts">
-  const button = document.getElementById('menuButton')!;
-  const nav = document.getElementById('mainNav')!;
+<!-- ✅ Hydrate on client -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('menuButton');
+    const nav = document.getElementById('mainNav');
 
-  button.addEventListener('click', () => {
-    nav.classList.toggle('open');
+    if (!button || !nav) return;
+
+    button.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
   });
 </script>
 
@@ -108,7 +100,7 @@ const links = [
   height: 28px;
 }
 
-/* Responsive behaviour */
+/* Mobile */
 @media (max-width: 700px) {
   .menu-button {
     display: block;
