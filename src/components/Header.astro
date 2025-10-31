@@ -42,12 +42,16 @@ const links = [
 </header>
 
 <script client:load lang="ts">
-  const button = document.getElementById('menuButton')!;
-  const nav = document.getElementById('mainNav')!;
+  const button = document.getElementById('menuButton');
+  const nav = document.getElementById('mainNav');
 
-  button.addEventListener('click', () => {
-    nav.classList.toggle('open');
-  });
+  if (button && nav) {
+
+      button.addEventListener('click', () => {
+        nav.classList.toggle('open');
+});
+}
+
 </script>
 
 <style>
