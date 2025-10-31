@@ -11,14 +11,14 @@ const links = [
 
 <header class="header">
   <div class="container">
-    <a href="/" class="logo">{SITE_TITLE}</a>
+    <a href="/" class="logo">Brynley Grist-Yates</a>
 
-    <!-- Burger icon -->
     <button
-      id="menuButton"
       class="menu-button"
       aria-label="Toggle navigation"
+      id="menuButton"
     >
+      <!-- SVG burger icon -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -31,18 +31,16 @@ const links = [
       </svg>
     </button>
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="nav">
+    <nav class="nav" id="mainNav">
       <ul>
         {links.map(link => (
-          <li><HeaderLink {...link} /></li>
+          <li><a href={link.href}>{link.name}</a></li>
         ))}
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- ✅ Client script that runs in the browser -->
 <script client:load lang="ts">
   const button = document.getElementById('menuButton')!;
   const nav = document.getElementById('mainNav')!;
@@ -136,3 +134,8 @@ const links = [
   }
 }
 </style>
+
+
+
+
+
